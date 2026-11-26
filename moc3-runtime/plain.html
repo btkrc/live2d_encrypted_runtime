@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>MOC3 明文基线测试</title>
+<style>body{font:16px system-ui;margin:24px;background:#dbe3ec;color:#192638}button{padding:10px;margin:4px}pre{white-space:pre-wrap}canvas{border:1px solid #738294}</style>
+<h1>MOC3 明文基线测试</h1>
+<p>本页在构建后读取使用者自行提供的模型，仅用于本地验证。</p>
+<button id="motion">播放当前动作</button><button id="destroy">销毁</button><button id="init">初始化</button>
+<pre id="status">正在初始化</pre>
+<script src="live2dcubismcore.js"></script>
+<script src="plain-runtime.js"></script>
+<script>
+const options = {model:{jsonPath:'model/model.model3.json'},display:{width:Math.min(innerWidth-40,420),height:Math.min(innerHeight-200,600),hOffset:20,vOffset:20},onError:showError};
+function showError(error){document.querySelector('#status').textContent=error.message;console.error(error)}
+async function init(){try{await L2Dwidget.init(options);document.querySelector('#status').textContent=JSON.stringify(L2Dwidget.getStatus(),null,2)}catch(error){showError(error)}}
+document.querySelector('#motion').onclick=()=>{const motion=L2Dwidget.getStatus().motion||'';const split=motion.lastIndexOf(':');if(split>=0)L2Dwidget.playMotion(motion.slice(0,split),Number(motion.slice(split+1)))};
+document.querySelector('#destroy').onclick=()=>L2Dwidget.destroy();
+document.querySelector('#init').onclick=init;
+init();
+</script>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "protected-cubism-runtime",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:plain": "node tools/build.mjs --plain",
+    "build": "node tools/build.mjs",
+    "serve": "node tools/serve.mjs",
+    "test": "node tests/crypto.mjs && node tests/public-inputs.mjs && node tests/browser.mjs",
+    "test:crypto": "node tests/crypto.mjs",
+    "audit:public": "node tools/audit-public.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "playwright-core": "1.58.2"
+  }
+}

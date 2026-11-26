@@ -1,0 +1,11 @@
+node_modules/
+.private/
+.local/
+.test/
+dist/
+reports/
+config.local.json
+.env
+.env.*
+*.key
+*.log

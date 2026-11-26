@@ -1,0 +1,5 @@
+{
+  "sdkDir": ".private/sdk",
+  "modelDir": ".private/model",
+  "modelSetting": "model.model3.json"
+}
